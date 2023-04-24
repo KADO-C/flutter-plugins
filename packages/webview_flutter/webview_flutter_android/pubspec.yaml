@@ -27,7 +27,7 @@ dependencies:
     git:
       url: https://github.com/KADO-C/flutter-plugins.git
       ref: dev-add_text_zoom
-      path: packages/webview_flutter/webview_flutter/webview_flutter_platform_interface
+      path: packages/webview_flutter/webview_flutter_platform_interface
 
 dev_dependencies:
   build_runner: ^2.1.4

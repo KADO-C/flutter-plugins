@@ -460,6 +460,13 @@ class WebSettingsHostApiImpl extends WebSettingsHostApi {
       enabled,
     );
   }
+
+  Future<void> setTextZoomFromInstance(
+    WebSettings instance,
+    int textZoom,
+  ) {
+    return setTextZoom(instanceManager.getInstanceId(instance)!, textZoom);
+  }
 }
 
 /// Host api implementation for [JavaScriptChannel].

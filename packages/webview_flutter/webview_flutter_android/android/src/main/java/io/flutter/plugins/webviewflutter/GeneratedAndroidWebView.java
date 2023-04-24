@@ -1293,6 +1293,8 @@ public class GeneratedAndroidWebView {
 
     void setGeolocationEnabled(Long instanceId, Boolean enabled);
 
+    void setTextZoom(@NonNull Long instanceId, @NonNull Integer textZoom);
+
     /** The codec used by WebSettingsHostApi. */
     static MessageCodec<Object> getCodec() {
       return WebSettingsHostApiCodec.INSTANCE;
@@ -1764,6 +1766,38 @@ public class GeneratedAndroidWebView {
             }
             reply.reply(wrapped);
           });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+      {
+        BasicMessageChannel<Object> channel =
+                new BasicMessageChannel<>(
+                        binaryMessenger,
+                        "dev.flutter.pigeon.WebSettingsHostApi.setTextZoom",
+                        getCodec());
+        if (api != null) {
+          channel.setMessageHandler(
+                  (message, reply) -> {
+                    Map<String, Object> wrapped = new HashMap<>();
+                    try {
+                      ArrayList<Object> args = (ArrayList<Object>) message;
+                      Number instanceIdArg = (Number) args.get(0);
+                      if (instanceIdArg == null) {
+                        throw new NullPointerException("instanceIdArg unexpectedly null.");
+                      }
+                      Number textZoomArg = (Number) args.get(1);
+                      if (textZoomArg == null) {
+                        throw new NullPointerException("textZoomArg unexpectedly null.");
+                      }
+                      api.setTextZoom(
+                              (instanceIdArg == null) ? null : instanceIdArg.longValue(), textZoomArg.intValue());
+                      wrapped.put("result", null);
+                    } catch (Error | RuntimeException exception) {
+                      wrapped.put("error", wrapError(exception));
+                    }
+                    reply.reply(wrapped);
+                  });
         } else {
           channel.setMessageHandler(null);
         }

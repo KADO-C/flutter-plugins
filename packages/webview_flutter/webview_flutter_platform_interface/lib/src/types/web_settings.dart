@@ -85,6 +85,7 @@ class WebSettings {
     this.allowsInlineMediaPlayback,
     this.zoomEnabled,
     this.geolocationEnabled,
+    this.textZoom,
     required this.userAgent,
   }) : assert(userAgent != null);
 
@@ -128,6 +129,8 @@ class WebSettings {
 
   /// See also: [WebView.geolocationEnabled]
   final bool? geolocationEnabled;
+
+  final int? textZoom;
 
   @override
   String toString() {

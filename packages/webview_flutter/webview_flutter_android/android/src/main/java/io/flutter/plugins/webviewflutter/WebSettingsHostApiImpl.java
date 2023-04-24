@@ -135,6 +135,12 @@ public class WebSettingsHostApiImpl implements WebSettingsHostApi {
   }
 
   @Override
+  public void setTextZoom(Long instanceId, Integer textZoom) {
+    final WebSettings webSettings = (WebSettings) instanceManager.getInstance(instanceId);
+    webSettings.setTextZoom(textZoom);
+  }
+
+  @Override
   public void setGeolocationEnabled(Long instanceId, Boolean enabled) {
     final WebSettings webSettings = (WebSettings) instanceManager.getInstance(instanceId);
     webSettings.setGeolocationEnabled(enabled);

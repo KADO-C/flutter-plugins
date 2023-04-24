@@ -97,6 +97,7 @@ class WebView extends StatefulWidget {
         AutoMediaPlaybackPolicy.require_user_action_for_all_media_types,
     this.allowsInlineMediaPlayback = false,
     this.backgroundColor,
+    this.textZoom,
   })  : assert(javascriptMode != null),
         assert(initialMediaPlaybackPolicy != null),
         assert(allowsInlineMediaPlayback != null),
@@ -304,6 +305,8 @@ class WebView extends StatefulWidget {
   /// default [backgroundColor] is `null`.
   final Color? backgroundColor;
 
+  final int? textZoom;
+
   @override
   State<StatefulWidget> createState() => _WebViewState();
 }
@@ -391,6 +394,7 @@ WebSettings _webSettingsFromWidget(WebView widget) {
     geolocationEnabled: widget.geolocationEnabled,
     userAgent: WebSetting<String?>.of(widget.userAgent),
     zoomEnabled: widget.zoomEnabled,
+    textZoom: widget.textZoom,
   );
 }
 
@@ -407,6 +411,7 @@ WebSettings _clearUnchangedWebSettings(
   assert(newValue.debuggingEnabled != null);
   assert(newValue.userAgent != null);
   assert(newValue.zoomEnabled != null);
+  assert(newValue.textZoom != null);
 
   JavascriptMode? javascriptMode;
   bool? hasNavigationDelegate;
@@ -414,6 +419,7 @@ WebSettings _clearUnchangedWebSettings(
   bool? debuggingEnabled;
   WebSetting<String?> userAgent = const WebSetting<String?>.absent();
   bool? zoomEnabled;
+  int? textZoom;
   if (currentValue.javascriptMode != newValue.javascriptMode) {
     javascriptMode = newValue.javascriptMode;
   }
@@ -432,6 +438,9 @@ WebSettings _clearUnchangedWebSettings(
   if (currentValue.zoomEnabled != newValue.zoomEnabled) {
     zoomEnabled = newValue.zoomEnabled;
   }
+  if (currentValue.textZoom != newValue.textZoom) {
+    textZoom = newValue.textZoom;
+  }
 
   return WebSettings(
     javascriptMode: javascriptMode,
@@ -440,6 +449,7 @@ WebSettings _clearUnchangedWebSettings(
     debuggingEnabled: debuggingEnabled,
     userAgent: userAgent,
     zoomEnabled: zoomEnabled,
+    textZoom: textZoom,
   );
 }
 

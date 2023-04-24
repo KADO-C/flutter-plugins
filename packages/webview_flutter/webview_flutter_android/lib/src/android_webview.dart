@@ -551,6 +551,10 @@ class WebSettings {
   Future<void> setAllowFileAccess(bool enabled) {
     return api.setAllowFileAccessFromInstance(this, enabled);
   }
+
+  Future<void> setTextZoom(int textZoom) {
+    return api.setTextZoomFromInstance(this, textZoom);
+  }
 }
 
 /// Exposes a channel to receive calls from javaScript.

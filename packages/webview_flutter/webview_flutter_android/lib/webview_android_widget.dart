@@ -124,6 +124,10 @@ class WebViewAndroidPlatformController extends WebViewPlatformController {
     webView.settings.setDisplayZoomControls(false);
     webView.settings.setBuiltInZoomControls(true);
 
+    if (creationParams.webSettings?.textZoom != null) {
+      webView.settings.setTextZoom(creationParams.webSettings!.textZoom!);
+    }
+
     _setCreationParams(creationParams);
     webView.setDownloadListener(downloadListener);
     webView.setWebChromeClient(webChromeClient);
@@ -285,6 +289,7 @@ class WebViewAndroidPlatformController extends WebViewPlatformController {
       if (setting.geolocationEnabled != null)
         _setGeolocationEnabled(setting.geolocationEnabled!),
       if (setting.zoomEnabled != null) _setZoomEnabled(setting.zoomEnabled!),
+      if (setting.textZoom != null) _setTextZoom(setting.textZoom!),
     ]);
   }
 
@@ -449,6 +454,10 @@ class WebViewAndroidPlatformController extends WebViewPlatformController {
 
   Future<void> _setZoomEnabled(bool zoomEnabled) {
     return webView.settings.setSupportZoom(zoomEnabled);
+  }
+
+  Future<void> _setTextZoom(int textZoom) {
+    return webView.settings.setTextZoom(textZoom);
   }
 }
 
